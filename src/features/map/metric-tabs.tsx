@@ -13,7 +13,7 @@ export function MetricTabs({ value, onChange }: MetricTabsProps) {
     <div
       role="group"
       aria-label={t('map.metric')}
-      className="absolute left-4 top-4 z-[1000] flex max-w-[calc(100%-2rem)] gap-1.5 overflow-x-auto rounded-2xl border border-border bg-surface p-1"
+      className="absolute left-4 right-[4.5rem] top-4 z-[1000] flex gap-1 rounded-2xl border border-border bg-surface p-1 sm:right-auto sm:gap-1.5"
     >
       {mapMetrics.map((metric) => {
         const on = metric === value;
@@ -23,11 +23,14 @@ export function MetricTabs({ value, onChange }: MetricTabsProps) {
             type="button"
             aria-pressed={on}
             onClick={() => onChange(metric)}
-            className={`h-9 shrink-0 cursor-pointer rounded-[10px] px-3.5 text-[13px] font-bold ${
+            className={`h-9 min-w-0 flex-1 cursor-pointer truncate rounded-[10px] px-1.5 text-xs font-bold sm:flex-none sm:px-3.5 sm:text-[13px] ${
               on ? 'bg-accent text-white' : 'text-muted hover:text-fg'
             }`}
           >
-            {t(`stats.${metric}`)}
+            <span className="sm:hidden" aria-hidden>
+              {t(`map.metricShort.${metric}`)}
+            </span>
+            <span className="max-sm:sr-only">{t(`stats.${metric}`)}</span>
           </button>
         );
       })}

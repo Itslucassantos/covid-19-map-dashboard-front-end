@@ -1,11 +1,23 @@
-import { useEffect, useState } from 'react';
+import { lazy, Suspense, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { CovidMap } from '@/features/map/covid-map';
+import { CountryTable } from '@/features/countries/country-table';
 import { ExpandButton } from '@/features/map/expand-button';
 import type { MapMetric } from '@/features/map/map-metric';
 import { MetricTabs } from '@/features/map/metric-tabs';
+import { GlobalStats } from '@/features/stats/global-stats';
+import { PeriodStats } from '@/features/stats/period-stats';
+import { CountrySheet } from '@/features/stats/country-sheet';
+import { StaleNotice } from '@/features/stats/stale-notice';
 import { CountryStats } from '@/features/stats/country-stats';
 import { Header } from '@/shared/ui/header';
+import { Skeleton } from '@/shared/ui/skeleton';
+
+const CovidMap = lazy(() =>
+  import('@/features/map/covid-map').then((module) => ({ default: module.CovidMap })),
+);
+const ChartsSection = lazy(() =>
+  import('@/features/charts/charts-section').then((module) => ({ default: module.ChartsSection })),
+);
 
 export function DashboardPage() {
   const { iso2 } = useParams();
@@ -37,15 +49,31 @@ export function DashboardPage() {
                 : 'relative h-full overflow-hidden rounded-[20px] border border-border'
             }
           >
-            <CovidMap metric={metric} selectedIso2={iso2} />
+            <Suspense fallback={<Skeleton className="h-full rounded-none" />}>
+              <CovidMap metric={metric} selectedIso2={iso2} />
+            </Suspense>
             <MetricTabs value={metric} onChange={setMetric} />
             <ExpandButton expanded={expanded} onToggle={() => setExpanded((value) => !value)} />
           </section>
         </div>
-        <div className="grid gap-4 md:grid-cols-[repeat(auto-fit,minmax(260px,1fr))]">
-          <CountryStats iso2={iso2} />
+        <StaleNotice />
+        <div className="-mx-4 flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-2 sm:-mx-8 sm:px-8 md:mx-0 md:grid md:snap-none md:grid-cols-[repeat(auto-fit,minmax(260px,1fr))] md:overflow-visible md:p-0">
+          <div className="flex min-w-[85%] shrink-0 snap-center md:min-w-0">
+            <GlobalStats />
+          </div>
+          <div className="flex min-w-[85%] shrink-0 snap-center md:min-w-0">
+            <CountryStats iso2={iso2} />
+          </div>
+          <div className="flex min-w-[85%] shrink-0 snap-center md:min-w-0">
+            <PeriodStats iso2={iso2} />
+          </div>
         </div>
+        <Suspense fallback={<Skeleton className="h-72" />}>
+          <ChartsSection iso2={iso2} />
+        </Suspense>
+        <CountryTable />
       </main>
+      <CountrySheet iso2={iso2} />
     </div>
   );
 }

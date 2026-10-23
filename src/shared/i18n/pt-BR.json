@@ -21,13 +21,20 @@
     "NETWORK_ERROR": "Não foi possível acessar o servidor."
   },
   "common": {
-    "retry": "Tentar novamente"
+    "retry": "Tentar novamente",
+    "close": "Fechar",
+    "cachedAt": "Mostrando dados salvos das {{time}}."
   },
   "map": {
     "metric": "Métrica do mapa",
     "today": "hoje",
     "expand": "Expandir mapa",
-    "collapse": "Recolher mapa"
+    "collapse": "Recolher mapa",
+    "metricShort": {
+      "cases": "Casos",
+      "deaths": "Mortes",
+      "casesPerMillion": "Por milhão"
+    }
   },
   "stats": {
     "cases": "Casos totais",
@@ -36,11 +43,51 @@
     "todayCases": "Novos casos hoje",
     "country": {
       "title": "País",
-      "empty": "Selecione um país no mapa"
+      "empty": "Selecione um país no mapa",
+      "ofGlobal": "{{value}} do global",
+      "shareOfGlobalCases": "% dos casos globais"
+    },
+    "global": {
+      "title": "Global",
+      "affectedCountries": "Países afetados"
+    },
+    "period": {
+      "title": "Período · novos casos",
+      "range": "Período",
+      "days": "{{count}}d",
+      "empty": "Sem histórico para este país",
+      "vsPrevious": "vs. {{count}} dias anteriores",
+      "newDeaths": "Novas mortes"
     }
   },
   "search": {
     "label": "Buscar país",
     "placeholder": "Buscar país"
+  },
+  "charts": {
+    "empty": "Sem histórico para este país",
+    "growth": {
+      "title": "Casos acumulados",
+      "global": "Global",
+      "globalScaled": "Global (escalado)",
+      "label": "Gráfico de linha dos casos acumulados nos últimos 30 dias"
+    },
+    "daily": {
+      "title": "Novos casos por dia",
+      "daily": "Diário",
+      "average": "Média de 7 dias",
+      "label": "Gráfico de barras dos novos casos por dia com linha de média de 7 dias"
+    }
+  },
+  "countries": {
+    "title": "Todos os países",
+    "caption": "Países ordenados pela coluna selecionada",
+    "name": "País",
+    "sortBy": "Ordenar por",
+    "showMore": "Mostrar mais",
+    "rank": "Posição"
+  },
+  "notice": {
+    "stale": "A fonte de dados parou de atualizar em {{date}}. Os números mostram o último dia disponível."
   }
 }

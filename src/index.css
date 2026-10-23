@@ -44,7 +44,7 @@
   --border: #2a2340;
   --text: #ede9f7;
   --muted: #a59fbd;
-  --accent: #8b5cf6;
+  --accent: #8453ef;
   --accent-text: #b79cff;
   --accent-soft: #2a2050;
   --track: #241e3a;
@@ -72,6 +72,11 @@ select {
 :focus-visible {
   outline: 2px solid var(--accent-text);
   outline-offset: 2px;
+}
+
+.thin-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
 }
 
 .tabular {

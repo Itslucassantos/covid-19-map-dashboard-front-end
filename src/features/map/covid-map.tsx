@@ -9,6 +9,7 @@ import { useApiErrorMessage } from '@/shared/api/use-api-error-message';
 import { countryDisplayName } from '@/shared/lib/country-name';
 import { formatNumber } from '@/shared/lib/format';
 import { markerRadius } from '@/shared/lib/marker-radius';
+import { CachedNotice } from '@/shared/ui/cached-notice';
 import { ErrorState } from '@/shared/ui/error-state';
 import { LandLayer } from './land-layer';
 import { MapLegend } from './map-legend';
@@ -54,7 +55,8 @@ function FlyToSelected({ position }: { position?: [number, number] }) {
 
   useEffect(() => {
     if (lat === undefined || lng === undefined) return;
-    map.flyTo([lat, lng], Math.max(map.getZoom(), 4), { duration: 0.8 });
+    const reduceMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
+    map.flyTo([lat, lng], Math.max(map.getZoom(), 4), { animate: !reduceMotion, duration: 0.8 });
   }, [map, lat, lng]);
 
   return null;
@@ -69,7 +71,7 @@ export function CovidMap({ metric, selectedIso2 }: CovidMapProps) {
   const { t, i18n } = useTranslation();
   const navigate = useNavigate();
   const errorMessage = useApiErrorMessage();
-  const { data: countries, error, refetch } = useQuery(covidQueries.countries());
+  const { data: countries, error, dataUpdatedAt, refetch } = useQuery(covidQueries.countries());
 
   const max = useMemo(
     () => Math.max(0, ...(countries ?? []).map((country) => metricValue(country, metric))),
@@ -140,7 +142,12 @@ export function CovidMap({ metric, selectedIso2 }: CovidMapProps) {
         })}
       </MapContainer>
       <MapLegend metric={metric} max={max} />
-      {error && (
+      {error && countries && (
+        <div className="absolute bottom-4 left-4 z-[1000] max-w-[calc(100%-8rem)] rounded-xl border border-border bg-surface px-3 pb-3">
+          <CachedNotice error={error} updatedAt={dataUpdatedAt} onRetry={() => void refetch()} />
+        </div>
+      )}
+      {error && !countries && (
         <div className="absolute left-4 top-20 z-[1000] rounded-xl border border-border bg-surface p-3">
           <ErrorState message={errorMessage(error)} onRetry={() => void refetch()} />
         </div>
