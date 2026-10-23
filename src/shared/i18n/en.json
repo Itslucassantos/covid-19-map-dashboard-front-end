@@ -1,0 +1,46 @@
+{
+  "app": {
+    "title": "COVID-19 Map Dashboard"
+  },
+  "header": {
+    "language": "Language",
+    "theme": "Theme",
+    "updated": "Data up to {{date}}"
+  },
+  "dashboard": {},
+  "notFound": {
+    "title": "Page not found",
+    "back": "Back to dashboard"
+  },
+  "errors": {
+    "VALIDATION_ERROR": "Invalid request.",
+    "COUNTRY_NOT_FOUND": "Country not found.",
+    "RATE_LIMITED": "Too many requests. Try again shortly.",
+    "UPSTREAM_UNAVAILABLE": "Data source unavailable.",
+    "INTERNAL_ERROR": "Something went wrong.",
+    "NETWORK_ERROR": "Could not reach the server."
+  },
+  "common": {
+    "retry": "Try again"
+  },
+  "map": {
+    "metric": "Map metric",
+    "today": "today",
+    "expand": "Expand map",
+    "collapse": "Collapse map"
+  },
+  "stats": {
+    "cases": "Total cases",
+    "deaths": "Deaths",
+    "casesPerMillion": "Cases per million",
+    "todayCases": "New cases today",
+    "country": {
+      "title": "Country",
+      "empty": "Select a country on the map"
+    }
+  },
+  "search": {
+    "label": "Search country",
+    "placeholder": "Search country"
+  }
+}
