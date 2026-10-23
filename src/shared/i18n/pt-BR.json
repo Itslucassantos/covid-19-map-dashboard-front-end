@@ -1,0 +1,46 @@
+{
+  "app": {
+    "title": "Dashboard de Mapa COVID-19"
+  },
+  "header": {
+    "language": "Idioma",
+    "theme": "Tema",
+    "updated": "Dados até {{date}}"
+  },
+  "dashboard": {},
+  "notFound": {
+    "title": "Página não encontrada",
+    "back": "Voltar ao dashboard"
+  },
+  "errors": {
+    "VALIDATION_ERROR": "Requisição inválida.",
+    "COUNTRY_NOT_FOUND": "País não encontrado.",
+    "RATE_LIMITED": "Muitas requisições. Tente novamente em instantes.",
+    "UPSTREAM_UNAVAILABLE": "Fonte de dados indisponível.",
+    "INTERNAL_ERROR": "Algo deu errado.",
+    "NETWORK_ERROR": "Não foi possível acessar o servidor."
+  },
+  "common": {
+    "retry": "Tentar novamente"
+  },
+  "map": {
+    "metric": "Métrica do mapa",
+    "today": "hoje",
+    "expand": "Expandir mapa",
+    "collapse": "Recolher mapa"
+  },
+  "stats": {
+    "cases": "Casos totais",
+    "deaths": "Mortes",
+    "casesPerMillion": "Casos por milhão",
+    "todayCases": "Novos casos hoje",
+    "country": {
+      "title": "País",
+      "empty": "Selecione um país no mapa"
+    }
+  },
+  "search": {
+    "label": "Buscar país",
+    "placeholder": "Buscar país"
+  }
+}

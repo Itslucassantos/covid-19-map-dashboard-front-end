@@ -1,0 +1,152 @@
+@import 'tailwindcss';
+@import 'leaflet/dist/leaflet.css';
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: 'Manrope Variable', ui-sans-serif, system-ui, sans-serif;
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-border: var(--border);
+  --color-fg: var(--text);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-accent-text: var(--accent-text);
+  --color-accent-soft: var(--accent-soft);
+  --color-track: var(--track);
+  --color-cases: var(--accent-text);
+  --color-deaths: var(--deaths);
+  --color-recovered: var(--recovered);
+  --color-active: var(--active);
+}
+
+:root {
+  --bg: #f5f3fb;
+  --surface: #ffffff;
+  --border: #e2ddf0;
+  --text: #1b1630;
+  --muted: #625b7c;
+  --accent: #6d3fe0;
+  --accent-text: #5b2fcc;
+  --accent-soft: #eee7ff;
+  --track: #ece8f7;
+  --grid: #e6e2f2;
+  --map-bg: #ece8f7;
+  --land: #c9c0e3;
+  --deaths: #c0332b;
+  --recovered: #1e7b4f;
+  --active: #a65f00;
+}
+
+:root.dark {
+  --bg: #0e0b16;
+  --surface: #171326;
+  --border: #2a2340;
+  --text: #ede9f7;
+  --muted: #a59fbd;
+  --accent: #8b5cf6;
+  --accent-text: #b79cff;
+  --accent-soft: #2a2050;
+  --track: #241e3a;
+  --grid: #2a2340;
+  --map-bg: #120e20;
+  --land: #3a3057;
+  --deaths: #ff7a70;
+  --recovered: #5ed39b;
+  --active: #f5b84a;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+}
+
+button,
+input,
+select {
+  font-family: inherit;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent-text);
+  outline-offset: 2px;
+}
+
+.tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+.leaflet-container {
+  background: var(--map-bg);
+  font-family: inherit;
+}
+
+.land {
+  fill: var(--land);
+  fill-opacity: 0.7;
+  stroke: var(--map-bg);
+  stroke-width: 0.6;
+}
+
+.covid-marker {
+  fill: var(--m);
+  fill-opacity: 0.45;
+  stroke: var(--mt);
+  stroke-width: 1;
+  cursor: pointer;
+  transition: fill-opacity 0.15s;
+}
+
+.covid-marker:hover {
+  fill-opacity: 0.7;
+}
+
+.covid-marker--selected {
+  fill-opacity: 0.85;
+  stroke: var(--text);
+  stroke-width: 3;
+}
+
+.leaflet-popup-content-wrapper {
+  background: var(--surface);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  box-shadow: 0 8px 24px rgb(0 0 0 / 0.25);
+}
+
+.leaflet-popup-content {
+  margin: 14px 16px;
+  min-width: 170px;
+}
+
+.leaflet-popup-tip {
+  background: var(--surface);
+}
+
+.leaflet-popup-close-button {
+  color: var(--muted) !important;
+}
+
+.leaflet-bar a,
+.leaflet-bar a:hover {
+  background: var(--surface);
+  color: var(--text);
+  border-color: var(--border);
+}
+
+.leaflet-bar {
+  border: 1px solid var(--border);
+  box-shadow: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
