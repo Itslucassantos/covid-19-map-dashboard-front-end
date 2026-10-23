@@ -21,13 +21,20 @@
     "NETWORK_ERROR": "Could not reach the server."
   },
   "common": {
-    "retry": "Try again"
+    "retry": "Try again",
+    "close": "Close",
+    "cachedAt": "Showing saved data from {{time}}."
   },
   "map": {
     "metric": "Map metric",
     "today": "today",
     "expand": "Expand map",
-    "collapse": "Collapse map"
+    "collapse": "Collapse map",
+    "metricShort": {
+      "cases": "Cases",
+      "deaths": "Deaths",
+      "casesPerMillion": "Per million"
+    }
   },
   "stats": {
     "cases": "Total cases",
@@ -36,11 +43,51 @@
     "todayCases": "New cases today",
     "country": {
       "title": "Country",
-      "empty": "Select a country on the map"
+      "empty": "Select a country on the map",
+      "ofGlobal": "{{value}} of global",
+      "shareOfGlobalCases": "Share of global cases"
+    },
+    "global": {
+      "title": "Global",
+      "affectedCountries": "Affected countries"
+    },
+    "period": {
+      "title": "Period · new cases",
+      "range": "Period",
+      "days": "{{count}}d",
+      "empty": "No history for this country",
+      "vsPrevious": "vs. previous {{count}} days",
+      "newDeaths": "New deaths"
     }
   },
   "search": {
     "label": "Search country",
     "placeholder": "Search country"
+  },
+  "charts": {
+    "empty": "No history for this country",
+    "growth": {
+      "title": "Cumulative cases",
+      "global": "Global",
+      "globalScaled": "Global (scaled)",
+      "label": "Line chart of cumulative cases over the last 30 days"
+    },
+    "daily": {
+      "title": "New cases per day",
+      "daily": "Daily",
+      "average": "7-day average",
+      "label": "Bar chart of new cases per day with a 7-day average line"
+    }
+  },
+  "countries": {
+    "title": "All countries",
+    "caption": "Countries sorted by the selected column",
+    "name": "Country",
+    "sortBy": "Sort by",
+    "showMore": "Show more",
+    "rank": "Rank"
+  },
+  "notice": {
+    "stale": "The data source stopped updating on {{date}}. Figures show the last available day."
   }
 }
